@@ -4,14 +4,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Use your actual GitHub URL and credentials ID here
-                git url: 'https://github.com/pankajkush711/python-selenium-tests.git', credentialsId: 'github-pat'
+                // Specify branch explicitly
+                git branch: 'main', url: 'https://github.com/pankajkush711/python-selenium-tests.git', credentialsId: 'github-pat'
             }
         }
 
         stage('Set up Python') {
             steps {
-                // On Windows agent, use 'bat' instead of 'sh'
                 bat '''
                     python -m venv venv
                     call venv\\Scripts\\activate.bat
